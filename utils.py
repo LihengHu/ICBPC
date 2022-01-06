@@ -182,12 +182,6 @@ def train_nolabel(net1, net2, train_data,test_data,epoch, optimizer_en, optimize
             im13 = torch.cat((im13, normalize(loader(Transformations3((unloader(im[i]))))).unsqueeze(0)), 0)
             im14 = torch.cat((im14, normalize(loader(Transformations4((unloader(im[i]))))).unsqueeze(0)), 0)
             im15 = torch.cat((im15, normalize(loader(Transformations5((unloader(im[i]))))).unsqueeze(0)), 0)
-            a = random.randint(0,80)
-            while(a==i):
-                a=random.randint(0,80)
-            im21 = torch.cat((im15, normalize(loader(Transformations1((unloader(im[a]))))).unsqueeze(0)), 0)
-
-
 
 
         im=im.cuda()
@@ -196,12 +190,7 @@ def train_nolabel(net1, net2, train_data,test_data,epoch, optimizer_en, optimize
         im13 = im13.cuda()
         im14 = im14.cuda()
         im15 = im15.cuda()
-        im21 = im21.cuda()
 
-        #im22 = im22.cuda()
-        #im23 = im23.cuda()
-        #im24 = im24.cuda()
-        #im25 = im25.cuda()
 
         # net output
         output_classifier11,output_classifier11_softmax = net1(im11)
@@ -234,11 +223,6 @@ def train_nolabel(net1, net2, train_data,test_data,epoch, optimizer_en, optimize
         new_out = output_classifier + torch.from_numpy((0.05 * sigma) / ((output_classifier.size(1) ** 0.5))).float().cuda()
           #
         ###############################################################
-        # decoder no noise --mse
-        #loss2 = criterion(output_no_noise , im)
-        ###############################################################
-        #loss3 = 0.05 * sobel_1vs1_1D(im, output_noise , criterion)
-        #
         z_Pedcc= torch.Tensor([]).cuda()
         #
         z_real = output_classifier
