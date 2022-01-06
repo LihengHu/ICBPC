@@ -2,15 +2,11 @@
 ****ICBP(Image Clustering Algorithm Based on Predefined
 Evenly-Distributed Class Centroids)****
 
-This is a reproducing code for ICBP.
-
-ICBP algorithm is an improvement of the ICAE algorithm, in which
-only the encoder is used to simplifying network structure, and the loss functions are improved based on cosine distance to achieves better clustering effect.
-Because the decoder is discarded, we no longer use reconstruction constraint
-loss and Sobel Smooth Loss.The contastive loss and MAE loss are used to make
-latent features similar between samples and its augmented samples.When we
-use contrastive loss and MMD, cosine distance is used to replace Eucilidean
-distance to better fit the PEDCC model.
+This is a reproducing code for ICBPC.
+The clustering algorithm based on deep neural network clusters
+by obtaining the optimal feature representation,but the clustering performance is still not ideal in the face of the complexity of the image.This paper
+presents an image clustering algorithm based on predefined evenly-distributed class centroids(PEDCC) and composite cosine distance.Compared with current popular auto-encoder structure, we design an encoder only network structure with normalized latent features, and two effective loss functions in latent feature space by replacing the Euclidean distance with cosine distance.We find that (1) contrastive learning plays a key role in clustering algorithm and greatly improves the quality of learning latent features; (2)Compared with Euclidean distance, composite cosine distance can be more suitable for the normalized latent features and PEDCC-based Maximum Mean
+Discrepancy(MMD) loss function.
 
 # Requirements <br>
 You must have the following already installed on your system. <br><br>
@@ -27,7 +23,7 @@ For reproducing the experiments on MNIST、Fashion-Mnist、COIL20 datasets and c
 1、python PEDCC.py : to Initialize the PEDCC, You need to set the cluster number, and every kind of dimension. We suggest that the MNIST every picture extract 60 dimension feature vector. <br>
 2、Modify data_transform.py: you should choose datasets. <br>
 3、python main.py for training. <br>
-4、python feature2.py to calculate ACC and NMI. <br>
+
 
 ***
 
