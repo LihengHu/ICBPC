@@ -210,29 +210,17 @@ def train_nolabel(net1, net2, train_data,test_data,epoch, optimizer_en, optimize
         output_classifier14,output_classifier14_softmax = net1(im14)
         output_classifier15,output_classifier15_softmax = net1(im15)
 
-        output_classifier21, output_classifier21_softmax = net1(im21)
-        #output_classifier22, output_classifier22_softmax = net1(im22)
-        #output_classifier23, output_classifier23_softmax = net1(im23)
-        #output_classifier24, output_classifier24_softmax = net1(im24)
-        #output_classifier25, output_classifier25_softmax = net1(im25)
 
 
         output_classifier,output_classifier_softmax = net1(im)
 
 
-
-        # KLD
-
-        # mse
         loss1 = 3*(criterion(output_classifier13, output_classifier14,0)  \
                 +criterion(output_classifier12, output_classifier13,0)  \
                 +criterion(output_classifier12, output_classifier11,0) \
                 +criterion(output_classifier14, output_classifier,0)  \
                 +criterion(output_classifier15, output_classifier14,0)\
-                +criterion(output_classifier,output_classifier21,1)
                     )
-
-
 
 
         loss2 = 8*(criterion1(output_classifier13, output_classifier14)  \
